@@ -19,7 +19,7 @@ export default function Movie({ movieInfo }) {
       <Link to={`/detail/${movieInfo.id}`}>
         <div className="img">
           <img src={`https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`} alt="" />
-          <span className="point">{movieInfo.vote_average}</span>
+          <span className="point">{movieInfo.vote_average} / 10</span>
         </div>
         <div className="info">
           <div className="titleBox">
@@ -29,7 +29,11 @@ export default function Movie({ movieInfo }) {
           </div>
           <div className="overviewBox">
             <p className="overview">{movieInfo.overview}</p>
-            <p className="vote">{movieInfo.vote_count}</p>
+            <p className="vote">
+              LIKE
+              <br />
+              {movieInfo.vote_count}
+            </p>
           </div>
         </div>
       </Link>

@@ -1,7 +1,9 @@
 import axios from "axios";
 import Profile from "./Profile";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, Link, useParams } from "react-router-dom";
+import "swiper/css";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Detail() {
   const params = useParams();
@@ -10,13 +12,14 @@ export default function Detail() {
   const [genres, setGenres] = useState([]);
   const [casts, setCast] = useState([]);
   const [crew, setCrew] = useState([]);
+  const navigate = useNavigate();
 
-  const image = useEffect(() => {
+  useEffect(() => {
     axios.get(`https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
       setDetail(res.data);
       setGenres(res.data.genres);
     });
-    axios.get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=en-US`).then((res) => {
+    axios.get(`https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.REACT_APP_MOVIE_KEY}&language=ko-KR&page=1`).then((res) => {
       setCast(res.data.cast);
       setCrew(res.data.crew);
     });
@@ -66,33 +69,69 @@ export default function Detail() {
               <dl>
                 <dt>cast</dt>
                 <dd>
-                  <ul className="profileList">
-                    {casts.map((item, idx) => {
-                      return <Profile key={idx} profileInfo={item} />;
-                    })}
-                  </ul>
+                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
+                    {casts
+                      .filter((item, idx) => {
+                        // if (item.gender === 1) { * 성별이 1인사람만 반환하기
+                        if (idx < 15) {
+                          return true;
+                        }
+                      })
+                      .map((item, idx) => {
+                        return (
+                          <SwiperSlide className="item">
+                            <Profile key={idx} profileInfo={item} />
+                          </SwiperSlide>
+                        );
+                      })}
+                  </Swiper>
                 </dd>
               </dl>
               <dl>
                 <dt>crew</dt>
                 <dd>
-                  <ul className="profileList">
-                    {crew.map((item, idx) => {
-                      return <Profile key={idx} profileInfo={item} />;
-                    })}
-                  </ul>
+                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
+                    {crew
+                      .filter((item, idx) => {
+                        if (idx < 15) {
+                          return true;
+                        }
+                      })
+                      .map((item, idx) => {
+                        return (
+                          <SwiperSlide className="item">
+                            <Profile key={idx} profileInfo={item} />
+                          </SwiperSlide>
+                        );
+                      })}
+                  </Swiper>
                 </dd>
               </dl>
             </div>
 
             <div className="overviewBox">
-              <p className="overview">{detail.overview}</p>
+              <dl>
+                <dt>내용</dt>
+                <dd className="overview">{detail.overview}</dd>
+              </dl>
             </div>
           </div>
         </div>
-        <button className="btnPrev">
+
+        {/* <button className="btnPrev">
           <Link to="/">List</Link>
-        </button>
+        </button> */}
+
+        <div className="btns">
+          <button
+            className="btn btnsBack"
+            onClick={function () {
+              navigate(-1);
+            }}
+          >
+            BACK
+          </button>
+        </div>
       </div>
       <div className="bg" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${detail.backdrop_path})`, backgroundSize: "cover" }}></div>
     </div>
