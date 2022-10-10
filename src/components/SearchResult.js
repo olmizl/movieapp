@@ -2,9 +2,10 @@ import axios from "axios";
 import Movie from "./Movie";
 import qs from "qs";
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SearchResult() {
+  const navigate = useNavigate();
   const location = useLocation();
   const searchMovie = qs.parse(location.search, { ignoreQueryPrefix: true }).movie;
   //ignoreQueryPrefix 는 앞에 물음표 무시
@@ -31,6 +32,17 @@ export default function SearchResult() {
             return <Movie movieInfo={item} key={idx} />;
           })}
         </ul>
+
+        <div className="btns">
+          <button
+            className="btn btnsBack"
+            onClick={function () {
+              navigate(-1);
+            }}
+          >
+            BACK
+          </button>
+        </div>
       </div>
     </>
   );

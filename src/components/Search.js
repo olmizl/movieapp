@@ -11,7 +11,6 @@ export default function Search() {
         placeholder="영화제목 , 키워드 검색"
         onChange={(e) => {
           setSearch(e.target.value);
-          // setSearch(e.currentTarget.value);
         }}
         onKeyUp={(e) => {
           if (e.key === "Enter") {

@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import MovieDetail from "./MovieDetail";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
 
 export default function ProfileDetail() {
+  const navigate = useNavigate();
   const params = useParams();
   const [actor, setActor] = useState({});
   const [movies, setMovies] = useState([]);
@@ -46,7 +50,7 @@ export default function ProfileDetail() {
               <dt>Another Movie</dt>
 
               <dd>
-                <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
+                <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"} modules={[Navigation, Pagination]} navigation>
                   {movies.map((item, idx) => {
                     return (
                       <SwiperSlide className="item">
@@ -62,6 +66,17 @@ export default function ProfileDetail() {
       </div>
 
       <div id="movies"></div>
+
+      <div className="btns">
+        <button
+          className="btn btnsBack"
+          onClick={function () {
+            navigate(-1);
+          }}
+        >
+          BACK
+        </button>
+      </div>
     </>
   );
 }

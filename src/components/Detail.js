@@ -3,7 +3,10 @@ import Profile from "./Profile";
 import { useEffect, useState } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation } from "swiper";
 
 export default function Detail() {
   const params = useParams();
@@ -69,11 +72,10 @@ export default function Detail() {
               <dl>
                 <dt>cast</dt>
                 <dd>
-                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
+                  <Swiper modules={[Navigation, Pagination]} className="profileList" spaceBetween={10} slidesPerView={"auto"} navigation>
                     {casts
                       .filter((item, idx) => {
-                        // if (item.gender === 1) { * 성별이 1인사람만 반환하기
-                        if (idx < 15) {
+                        if (idx < 20) {
                           return true;
                         }
                       })
@@ -90,10 +92,10 @@ export default function Detail() {
               <dl>
                 <dt>crew</dt>
                 <dd>
-                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"}>
+                  <Swiper className="profileList" spaceBetween={10} slidesPerView={"auto"} modules={[Navigation, Pagination]} navigation>
                     {crew
                       .filter((item, idx) => {
-                        if (idx < 15) {
+                        if (idx < 20) {
                           return true;
                         }
                       })
@@ -117,10 +119,6 @@ export default function Detail() {
             </div>
           </div>
         </div>
-
-        {/* <button className="btnPrev">
-          <Link to="/">List</Link>
-        </button> */}
 
         <div className="btns">
           <button
