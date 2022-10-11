@@ -8,6 +8,17 @@
 (2) REACT로 제작하여 새로고침 없이 페이지 렌더링 <br/>
 (3) 검색기능을 이용하여 선별된 영화 외에도 영화 검색 가능
 
+### 사용한 SKILLS
+REACT , CSS , JAVA-SCRIPT
+
+### 제작기간
+약 10일 소요
+
+### 제작 기여도
+100% (개인프로젝트)
+
+### 학습 내용
+REACT를 기반으로 API데이터 서버 통신의 기본을 이해하기 위해 TMDB의 API를 활용하여 실시간 데이터 렌더링을 익혔으며, REACT에서의 LINK , useEffect 함수 등 다양한 기본함수를 활용하여 REACT를 통한 페이지 구축 기능을 함유하였습니다.
 
 ## 메인페이지
 ![wmtmain](https://user-images.githubusercontent.com/111400649/194866202-17cda7f8-dd94-40a9-974a-f9777b9bc8a6.PNG)
