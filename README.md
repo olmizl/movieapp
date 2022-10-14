@@ -2,6 +2,9 @@
 
 오늘의 인기 영화를 선별하여 보여주는 사이트입니다
 
+# `Site`
+https://endearing-duckanoo-e0da8f.netlify.app/
+
 ## 주요 기능
 
 (1) TMDB의 API를 이용하여 데이터 실시간 연동 <br/>
