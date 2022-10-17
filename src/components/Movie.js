@@ -18,7 +18,7 @@ export default function Movie({ movieInfo }) {
     <li className="item">
       <Link to={`/detail/${movieInfo.id}`}>
         <div className="img">
-          <img src={`https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`} alt="" />
+          <img src={`https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`} alt="영화 포스터 이미지" />
           <span className="point">{movieInfo.vote_average} / 10</span>
         </div>
         <div className="info">

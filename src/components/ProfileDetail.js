@@ -30,7 +30,7 @@ export default function ProfileDetail() {
       <div id="actor">
         <div className="contain">
           <div className="actorImg">
-            <img src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt="" />
+            <img src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt="배우 프로필 사진" />
             <h1 className="actorName"> {actor.name}</h1>
           </div>
           <div className="actorDesc">

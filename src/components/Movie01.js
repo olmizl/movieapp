@@ -9,7 +9,7 @@ export default function Movie01({ movieInfo }) {
 
   return (
     <div className="img" ref={boxRef}>
-      <img src={`https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`} alt="" />
+      <img src={`https://image.tmdb.org/t/p/w200/${movieInfo.poster_path}`} alt="영화 포스터 이미지" />
     </div>
   );
 }

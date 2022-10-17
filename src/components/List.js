@@ -30,7 +30,7 @@ export default function List() {
           })}
         </div>
         <span className="cursor">
-          <img src={`/images/mouse-cursor.png`} alt="" />
+          <img src={`/images/mouse-cursor.png`} alt="마우스 아이콘" />
         </span>
       </div>
       <div className="container">

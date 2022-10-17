@@ -36,7 +36,7 @@ export default function Detail() {
         </h2>
         <div className="detailBox">
           <div className="img">
-            <img src={`https://image.tmdb.org/t/p/w300/${detail.poster_path}`} alt="" />
+            <img src={`https://image.tmdb.org/t/p/w300/${detail.poster_path}`} alt="영화 포스터 사진" />
           </div>
           <div className="info">
             <div className="titleBox">
